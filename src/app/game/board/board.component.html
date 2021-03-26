@@ -1,0 +1,8 @@
+<div class="float-right">
+  <button class="btn btn-outline-dark" (click)="resetBoard()">Reset</button>
+</div>
+<br>
+<div *ngFor="let b of board, let i = index" class="d-inline">
+  <br *ngIf="i%3==0">
+  <div class="btn btn-dark board-button" id="{{i}}" (click)="btnClick(i)">{{b}}</div>
+</div>

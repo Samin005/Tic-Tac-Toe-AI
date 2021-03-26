@@ -7,11 +7,15 @@ import { AuthComponent } from './auth/auth.component';
 import {SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider} from 'angularx-social-login';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './auth/auth.interceptor';
+import { GameComponent } from './game/game.component';
+import { BoardComponent } from './game/board/board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    GameComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,

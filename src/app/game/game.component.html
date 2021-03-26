@@ -1,0 +1,9 @@
+<div *ngIf="gameStarted; else showHome">
+  <div class="float-left">
+    <button class="btn btn-outline-dark" (click)="quitGame()">Quit</button>
+  </div>
+  <app-board></app-board>
+</div>
+<ng-template #showHome>
+  <button class="btn btn-outline-dark" (click)="startGame()">Start Game!</button>
+</ng-template>
