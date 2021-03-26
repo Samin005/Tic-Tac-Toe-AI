@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {GameService} from './game.service';
 
 @Component({
   selector: 'app-game',
@@ -7,20 +8,27 @@ import {Component, OnInit} from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  gameStarted: boolean;
-
-  constructor() {
-    this.gameStarted = false;
+  constructor(public gameService: GameService) {
   }
 
   ngOnInit(): void {
+    this.gameService.initialize().subscribe(response => {
+      this.gameService.modes = Object.keys(response.modes) as any;
+      this.gameService.modeDetails = Object.values(response.modes);
+      this.gameService.modeDetail = this.gameService.modeDetails[0];
+    });
+  }
+
+  displayModeDetails(option: any): void {
+    this.gameService.selectedModeIndex = option.value;
+    this.gameService.modeDetail = this.gameService.modeDetails[this.gameService.selectedModeIndex];
   }
 
   startGame(): void {
-    this.gameStarted = true;
+    this.gameService.gameStarted = true;
   }
 
   quitGame(): void {
-    this.gameStarted = false;
+    this.gameService.gameStarted = false;
   }
 }

@@ -1,9 +1,30 @@
-<div *ngIf="gameStarted; else showHome">
+<div *ngIf="gameService.gameStarted; else showHome">
   <div class="float-left">
-    <button class="btn btn-outline-dark" (click)="quitGame()">Quit</button>
+    <button class="btn btn-dark" (click)="quitGame()">
+      <i class="fas fa-backspace"></i> Quit
+    </button>
   </div>
   <app-board></app-board>
 </div>
 <ng-template #showHome>
-  <button class="btn btn-outline-dark" (click)="startGame()">Start Game!</button>
+  <div class="d-inline-block text-light mt-5 w-50">
+    <div class="row">
+      <div class="col-md-6">
+        <div>Select Mode:</div>
+      </div>
+      <div class="col-md-6">
+        <label>
+          <select class="btn btn-dark" (change)="displayModeDetails($event.target)">
+            <option *ngFor="let mode of gameService.modes, let i = index"
+                    value="{{i}}"
+                    [selected]="i == gameService.selectedModeIndex ? true:null">
+              {{mode}}
+            </option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="my-3">{{gameService.modeDetail}}</div>
+    <button class="btn btn-dark" (click)="startGame()">Start Game!</button>
+  </div>
 </ng-template>

@@ -9,19 +9,23 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import { GameComponent } from './game/game.component';
 import { BoardComponent } from './game/board/board.component';
+import { TsParticlesComponent } from './ts-particles/ts-particles.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     GameComponent,
-    BoardComponent
+    BoardComponent,
+    TsParticlesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

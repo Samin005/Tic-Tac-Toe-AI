@@ -1,5 +1,7 @@
 <div class="float-right">
-  <button class="btn btn-outline-dark" (click)="resetBoard()">Reset</button>
+  <button class="btn btn-dark" (click)="resetBoard()">
+    Reset <i class="fas fa-redo-alt"></i>
+  </button>
 </div>
 <br>
 <div *ngFor="let b of board, let i = index" class="d-inline">
