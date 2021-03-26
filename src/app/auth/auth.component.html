@@ -1,0 +1,29 @@
+<div *ngIf="socialAuthService.authState | async as user; else signedOut">
+  <div class="btn-group" data-toggle="dropdown">
+    <button type="button" class="btn btn-light">
+      <img src="{{ user.photoUrl }}" class="avatar rounded-circle" alt="{{ user.name }}'s photo">
+    </button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+            aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu p-0" style="min-width: fit-content">
+      <div class="dropdown-item signOutDiv p-0">
+        <button class="btn btn-outline-danger" (click)="signOut()">
+          Sign-out <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #signedOut>
+  <button
+    class="btn btn-light"
+    style="border-color: lightgray"
+    (click)="signInWithGoogle()">
+    <i class="fab fa-google"></i> Sign-In
+  </button>
+</ng-template>
+<!--<div class="my-5 text-center">-->
+<!--  <button class="btn btn-success" (click)="requestSecretData()">Request Secret Data</button>-->
+<!--</div>-->

@@ -3,16 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
+import {SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider} from 'angularx-social-login';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '1004871412574-hfv3vbkbbgaa2lspecsmhlfrtb72pd3a.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
