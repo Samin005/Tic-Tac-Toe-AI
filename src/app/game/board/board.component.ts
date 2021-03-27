@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {GameService} from '../game.service';
 
 @Component({
   selector: 'app-board',
@@ -7,10 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  boardSize = 9;
-  board = new Array(this.boardSize);
-
-  constructor() {
+  constructor(public gameService: GameService) {
   }
 
   ngOnInit(): void {
@@ -20,10 +18,22 @@ export class BoardComponent implements OnInit {
     // const btn = document.getElementById('' + btnID) as HTMLElement;
     // console.log(btnID);
     // btn.textContent = 'X';
-    this.board[btnID] = 'X';
+    this.gameService.makeMove({
+      move_index: btnID
+    }).subscribe(response => {
+      this.gameService.updateBoard(response);
+      if (this.gameService.isGameOver) {
+        this.gameService.winnerCellIndexes = response.winnerCellIndexes;
+        console.log(this.gameService.winnerCellIndexes);
+      }
+    });
   }
 
   resetBoard(): void {
-    this.board = new Array(this.boardSize);
+    this.gameService.winnerCellIndexes = [];
+    this.gameService.resetBoard().subscribe(response => {
+      this.gameService.updateBoard(response);
+    });
+    // this.gameService.board = new Array(this.gameService.boardSize);
   }
 }

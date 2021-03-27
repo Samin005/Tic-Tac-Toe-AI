@@ -8,9 +8,10 @@ import Typed from 'typed.js';
 })
 export class GameService {
 
-  rootURL = 'http://127.0.0.1:8000/tic-tac-toe-ai/';
+  rootURL = 'http://samin005.pythonanywhere.com/tic-tac-toe-ai/';
+  // mode info
   modes = [];
-  selectedModeIndex = 0;
+  currentModeIndex = 0;
   modeDetails = [];
   modeDetail = '';
   gameStarted = false;
@@ -22,12 +23,38 @@ export class GameService {
     loop: false
   };
   typed!: any;
+  // board info
+  boardSize = 9;
+  board = new Array(this.boardSize);
+  // game info
+  gameStatusText = '';
+  isGameOver = false;
+  winnerCellIndexes: number[];
 
   constructor(private http: HttpClient) {
+    this.winnerCellIndexes = [];
   }
 
   initialize(): Observable<any> {
     return this.http.get(this.rootURL + 'init/');
+  }
+
+  startGame(body: object): Observable<any> {
+    return this.http.post(this.rootURL + 'start-game/', body);
+  }
+
+  makeMove(body: object): Observable<any> {
+    return this.http.post(this.rootURL + 'make-move/', body);
+  }
+
+  resetBoard(): Observable<any> {
+    return this.http.get(this.rootURL + 'reset-board/');
+  }
+
+  updateBoard(response: any): void {
+    this.board = response.board;
+    this.gameStatusText = response.gameStatusText;
+    this.isGameOver = response.isGameOver;
   }
 
   updateTypedOptions(distroy: boolean): void {

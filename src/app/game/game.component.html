@@ -5,6 +5,7 @@
     </button>
   </div>
   <app-board></app-board>
+  <div class="text-light mt-3">{{gameService.gameStatusText}}</div>
 </div>
 <ng-template #showHome>
   <div class="d-inline-block text-light mt-5 w-50">
@@ -17,7 +18,7 @@
           <select class="btn btn-dark" (change)="displayModeDetails($event.target)">
             <option *ngFor="let mode of gameService.modes, let i = index"
                     value="{{i}}"
-                    [selected]="i == gameService.selectedModeIndex ? true:null">
+                    [selected]="i == gameService.currentModeIndex ? true:null">
               {{mode}}
             </option>
           </select>
