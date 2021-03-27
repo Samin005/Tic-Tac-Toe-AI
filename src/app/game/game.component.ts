@@ -13,11 +13,16 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    Swal.fire({title: 'Getting things ready...'}).finally();
+    Swal.showLoading();
     this.gameService.initialize().subscribe(response => {
       this.gameService.modes = Object.keys(response.modes) as any;
       this.gameService.modeDetails = Object.values(response.modes);
       this.gameService.modeDetail = this.gameService.modeDetails[0];
       this.gameService.updateTypedOptions(false);
+      if (Swal.isVisible()) {
+        Swal.close();
+      }
     }, error => {
       Swal.fire({
         icon: 'error',
