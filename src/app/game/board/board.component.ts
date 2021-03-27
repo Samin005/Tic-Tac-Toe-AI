@@ -22,9 +22,9 @@ export class BoardComponent implements OnInit {
       move_index: btnID
     }).subscribe(response => {
       this.gameService.updateBoard(response);
-      if (this.gameService.isGameOver) {
+      if (this.gameService.isGameOver && this.gameService.gameStatusText !== 'Game tied!') {
         this.gameService.winnerCellIndexes = response.winnerCellIndexes;
-        console.log(this.gameService.winnerCellIndexes);
+        console.log(this.gameService.gameStatusText);
       }
     });
   }
