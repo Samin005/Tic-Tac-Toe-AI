@@ -11,6 +11,7 @@ import { GameComponent } from './game/game.component';
 import { BoardComponent } from './game/board/board.component';
 import { TsParticlesComponent } from './ts-particles/ts-particles.component';
 import {FormsModule} from '@angular/forms';
+import { TypedjsModelDetailComponent } from './game/typedjs-model-detail/typedjs-model-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from '@angular/forms';
     AuthComponent,
     GameComponent,
     BoardComponent,
-    TsParticlesComponent
+    TsParticlesComponent,
+    TypedjsModelDetailComponent
   ],
   imports: [
     BrowserModule,

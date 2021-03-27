@@ -16,13 +16,17 @@ export class GameComponent implements OnInit {
       this.gameService.modes = Object.keys(response.modes) as any;
       this.gameService.modeDetails = Object.values(response.modes);
       this.gameService.modeDetail = this.gameService.modeDetails[0];
+      this.gameService.updateTypedOptions(false);
     });
   }
 
   displayModeDetails(option: any): void {
     this.gameService.selectedModeIndex = option.value;
     this.gameService.modeDetail = this.gameService.modeDetails[this.gameService.selectedModeIndex];
+    this.gameService.updateTypedOptions(true);
   }
+
+
 
   startGame(): void {
     this.gameService.gameStarted = true;
