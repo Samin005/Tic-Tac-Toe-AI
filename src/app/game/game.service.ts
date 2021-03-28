@@ -7,8 +7,8 @@ import Typed from 'typed.js';
   providedIn: 'root'
 })
 export class GameService {
-  rootURL = 'http://127.0.0.1:8000/tic-tac-toe-ai/';
-  // rootURL = 'http://samin005.pythonanywhere.com/tic-tac-toe-ai/';
+  // rootURL = 'http://127.0.0.1:8000/tic-tac-toe-ai/';
+  rootURL = 'http://samin005.pythonanywhere.com/tic-tac-toe-ai/';
   // mode info
   modes = [];
   currentModeIndex = 0;
@@ -62,5 +62,15 @@ export class GameService {
     this.typedOptions.strings = [this.modeDetail];
     this.typed = new Typed('#typedText', this.typedOptions);
     this.typed.start();
+  }
+
+  playButtonTapSound(): void {
+    const sound = document.getElementById('button-tap-sound') as any;
+    sound.play();
+  }
+
+  playGameWonSound(): void {
+    const sound = document.getElementById('game-won-sound') as any;
+    sound.play();
   }
 }

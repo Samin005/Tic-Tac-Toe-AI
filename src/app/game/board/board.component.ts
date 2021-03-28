@@ -19,6 +19,7 @@ export class BoardComponent implements OnInit {
     // const btn = document.getElementById('' + btnID) as HTMLElement;
     // console.log(btnID);
     // btn.textContent = 'X';
+    this.gameService.playButtonTapSound();
     this.gameService.makeMove({
       move_index: btnID,
       board: this.gameService.board,
@@ -31,6 +32,7 @@ export class BoardComponent implements OnInit {
       this.gameService.updateBoard(response);
       if (this.gameService.isGameOver && this.gameService.gameStatusText !== 'Game tied!') {
         this.gameService.winnerCellIndexes = response.winnerCellIndexes;
+        this.gameService.playGameWonSound();
       }
     }, error => {
       Swal.fire({
@@ -42,6 +44,7 @@ export class BoardComponent implements OnInit {
   }
 
   resetBoard(): void {
+    this.gameService.playButtonTapSound();
     this.gameService.winnerCellIndexes = [];
     this.gameService.clearBoard({
       current_mode_index: this.gameService.currentModeIndex

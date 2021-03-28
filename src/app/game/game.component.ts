@@ -33,12 +33,14 @@ export class GameComponent implements OnInit {
   }
 
   displayModeDetails(option: any): void {
+    this.gameService.playButtonTapSound();
     this.gameService.currentModeIndex = option.value;
     this.gameService.modeDetail = this.gameService.modeDetails[this.gameService.currentModeIndex];
     this.gameService.updateTypedOptions(true);
   }
 
   startGame(): void {
+    this.gameService.playButtonTapSound();
     this.gameService.winnerCellIndexes = [];
     this.gameService.clearBoard({
       current_mode_index: this.gameService.currentModeIndex
@@ -55,6 +57,7 @@ export class GameComponent implements OnInit {
   }
 
   quitGame(): void {
+    this.gameService.playButtonTapSound();
     this.gameService.gameStarted = false;
   }
 }
