@@ -1,27 +1,28 @@
-# TicTacToeAI
+# Tic Tac Toe (AI)
 
+Play the game live: https://samin005.github.io/Tic-Tac-Toe-AI/  
+
+## Basic Info
+
+This is a tic-tac-toe game where the AI makes the best posible move by using the Minimax Alpha Beta Pruning algorithm. The frontend of the app is created with Angular and backend is reated using Django (python). The AI sits in the backend and there is a REST service that makes all the communication possible.  
+The app also has Google sign-in options with proper JWT authentication.
+
+## Game Details
+
+ There are 3 modes:  
+ 1. Hard: You will play against an AI that uses the Minimax Alpha Beta Pruning Algorithm to make the best move possible. You won\'t win, the best thing you can do is a tie!  
+ 2. Easy: You will play against an AI that randomly chooses its next move.
+ 3. 2 Players: You can play with your friend in a friendly game of Tic Tac Toe.  
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/34473594/112763630-14adf080-9027-11eb-9fae-69a19c644aab.png)  
+
+![image](https://user-images.githubusercontent.com/34473594/112763700-5b9be600-9027-11eb-9ff1-28b940627e1a.png)  
+
+![image](https://user-images.githubusercontent.com/34473594/112763740-8d14b180-9027-11eb-83ad-c8e81d6ceb41.png)  
+
+![image](https://user-images.githubusercontent.com/34473594/112763791-ca793f00-9027-11eb-9a62-02a078e9c190.png)  
+
+Sound from Zapsplat.com  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
