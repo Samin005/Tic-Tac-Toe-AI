@@ -7,8 +7,8 @@ import Typed from 'typed.js';
   providedIn: 'root'
 })
 export class GameService {
-
-  rootURL = 'http://samin005.pythonanywhere.com/tic-tac-toe-ai/';
+  rootURL = 'http://127.0.0.1:8000/tic-tac-toe-ai/';
+  // rootURL = 'http://samin005.pythonanywhere.com/tic-tac-toe-ai/';
   // mode info
   modes = [];
   currentModeIndex = 0;
@@ -25,8 +25,9 @@ export class GameService {
   typed!: any;
   // board info
   boardSize = 9;
-  board = new Array(this.boardSize);
   // game info
+  board = new Array(this.boardSize);
+  currentPlayer = '';
   gameStatusText = '';
   isGameOver = false;
   winnerCellIndexes: number[];
@@ -39,20 +40,17 @@ export class GameService {
     return this.http.get(this.rootURL + 'init/');
   }
 
-  startGame(body: object): Observable<any> {
-    return this.http.post(this.rootURL + 'start-game/', body);
+  clearBoard(body: object): Observable<any> {
+    return this.http.post(this.rootURL + 'clear-board/', body);
   }
 
   makeMove(body: object): Observable<any> {
     return this.http.post(this.rootURL + 'make-move/', body);
   }
 
-  resetBoard(): Observable<any> {
-    return this.http.get(this.rootURL + 'reset-board/');
-  }
-
   updateBoard(response: any): void {
     this.board = response.board;
+    this.currentPlayer = response.currentPlayer;
     this.gameStatusText = response.gameStatusText;
     this.isGameOver = response.isGameOver;
   }

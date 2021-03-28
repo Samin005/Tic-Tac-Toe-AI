@@ -40,7 +40,7 @@ export class GameComponent implements OnInit {
 
   startGame(): void {
     this.gameService.winnerCellIndexes = [];
-    this.gameService.startGame({
+    this.gameService.clearBoard({
       current_mode_index: this.gameService.currentModeIndex
     }).subscribe(response => {
       this.gameService.updateBoard(response);
