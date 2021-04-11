@@ -4,7 +4,7 @@ Play the game live: https://samin005.github.io/Tic-Tac-Toe-AI/
 
 ## Basic Info
 
-This is a tic-tac-toe game where the AI makes the best posible move by using the Minimax Alpha Beta Pruning algorithm. The frontend of the app is created with Angular and backend is reated using Django (python). The AI sits in the backend and there is a REST service that makes all the communication possible.  
+This is a tic-tac-toe game where the AI makes the best possible move by using the Minimax Alpha Beta Pruning algorithm. The frontend of the app is created with Angular and backend is created using Django (python). The AI sits in the backend and there is a REST service that makes all the communication possible.  
 The app also has Google sign-in options with proper JWT authentication.
 
 ## Game Details
