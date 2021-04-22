@@ -1,0 +1,7 @@
+.footer{
+  position: fixed;
+  bottom: 0;
+  right: 3%;
+  height: 60px;
+  line-height: 60px;
+}

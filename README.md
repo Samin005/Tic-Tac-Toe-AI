@@ -1,6 +1,6 @@
 # Tic Tac Toe (AI)
 
-Play the game live: https://samin005.github.io/Tic-Tac-Toe-AI/  
+Play the game live: <a href="https://samin005.github.io/Tic-Tac-Toe-AI/" target="_blank">https://samin005.github.io/Tic-Tac-Toe-AI/</a>  
 
 ## Basic Info
 
