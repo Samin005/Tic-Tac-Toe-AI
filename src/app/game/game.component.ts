@@ -54,8 +54,9 @@ export class GameComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: error.status,
-        text: error.statusText
-      }).finally();
+        text: error.statusText,
+        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
+      }).then(() => this.startGame());
     });
   }
 
