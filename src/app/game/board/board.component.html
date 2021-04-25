@@ -6,5 +6,5 @@
 <br>
 <div *ngFor="let cell of gameService.board, let i = index" class="d-inline">
   <br *ngIf="i%3==0">
-  <div [className]="gameService.winnerCellIndexes.indexOf(i) > -1 ? 'btn board-button':'btn btn-dark board-button'" id="{{i}}" (click)="btnClick(i)">{{cell}}</div>
+  <div [className]="gameService.winnerCellIndexes.indexOf(i) > -1 ? 'btn board-button':'btn btn-dark board-button'" id="{{i}}" (click)="btnClick(i, false)">{{cell}}</div>
 </div>

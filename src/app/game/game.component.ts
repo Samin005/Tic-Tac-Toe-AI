@@ -19,7 +19,7 @@ export class GameComponent implements OnInit {
       this.gameService.modes = Object.keys(response.modes) as any;
       this.gameService.modeDetails = Object.values(response.modes);
       this.gameService.modeDetail = this.gameService.modeDetails[0];
-      this.gameService.updateTypedOptions(false);
+      this.gameService.updateTypedOptions(true);
       if (Swal.isVisible()) {
         Swal.close();
       }
@@ -27,8 +27,11 @@ export class GameComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: error.status,
-        text: error.statusText
-      }).finally();
+        text: error.statusText,
+        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
+      }).then(() => {
+        this.ngOnInit();
+      });
     });
   }
 

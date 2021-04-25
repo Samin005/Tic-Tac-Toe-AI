@@ -15,10 +15,14 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  btnClick(btnID: number): void {
+  btnClick(btnID: number, showLoading: boolean): void {
     // const btn = document.getElementById('' + btnID) as HTMLElement;
     // console.log(btnID);
     // btn.textContent = 'X';
+    if (showLoading){
+      Swal.fire({title: 'Retrying...'}).finally();
+      Swal.showLoading();
+    }
     this.gameService.playButtonTapSound();
     this.gameService.makeMove({
       move_index: btnID,
@@ -29,17 +33,24 @@ export class BoardComponent implements OnInit {
       game_status_text: this.gameService.gameStatusText,
       winner_cell_indexes: this.gameService.winnerCellIndexes
     }).subscribe(response => {
+      if (Swal.isVisible()) {
+        Swal.close();
+      }
       this.gameService.updateBoard(response);
       if (this.gameService.isGameOver && this.gameService.gameStatusText !== 'Game tied!') {
         this.gameService.winnerCellIndexes = response.winnerCellIndexes;
         this.gameService.playGameWonSound();
       }
     }, error => {
+      console.log(error);
       Swal.fire({
         icon: 'error',
         title: error.status,
-        text: error.statusText
-      }).finally();
+        text: error.statusText,
+        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
+      }).then(() => {
+        this.btnClick(btnID, true);
+      });
     });
   }
 
@@ -54,8 +65,9 @@ export class BoardComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: error.status,
-        text: error.statusText
-      }).finally();
+        text: error.statusText,
+        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
+      }).then(() => this.resetBoard());
     });
   }
 }

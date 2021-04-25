@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import Typed from 'typed.js';
+import {retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  // rootURL = 'http://127.0.0.1:8000/tic-tac-toe-ai/';
-  rootURL = 'http://samin005.pythonanywhere.com/tic-tac-toe-ai/';
+  rootURL = 'http://127.0.0.1:8000/tic-tac-toe-ai/';
+  // rootURL = 'http://samin005.pythonanywhere.com/tic-tac-toe-ai/';
   // mode info
   modes = [];
   currentModeIndex = 0;
@@ -37,7 +38,10 @@ export class GameService {
   }
 
   initialize(): Observable<any> {
-    return this.http.get(this.rootURL + 'init/');
+    return this.http.get(this.rootURL + 'init/')
+      .pipe(
+        retry(3)
+      );
   }
 
   clearBoard(body: object): Observable<any> {
