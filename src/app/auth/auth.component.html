@@ -7,8 +7,12 @@
             aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
-    <div class="dropdown-menu p-0" style="min-width: fit-content">
-      <div class="dropdown-item signOutDiv p-0">
+    <div class="dropdown-menu text-center" style="min-width: fit-content">
+      <div class="dropdown-item leaderboardDiv btn" (click)="navigateToLeaderboard()">
+        <i class="far fa-list-alt"></i> Leaderboard
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-item signOutDiv">
         <button class="btn btn-outline-danger" (click)="signOut()">
           Sign-out <i class="fas fa-sign-out-alt"></i>
         </button>

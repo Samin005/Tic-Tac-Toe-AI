@@ -12,9 +12,9 @@ export class AuthService {
   refreshToken: any;
   refreshTokenInterval: number;
   backendRootUrl = 'http://Samin005.pythonanywhere.com/';
-  signInUrl = this.backendRootUrl + '/auth/google/';
-  signOutUrl = this.backendRootUrl + '/auth/logout/';
-  tokenRefreshUrl = this.backendRootUrl + '/auth/token/refresh/';
+  signInUrl = this.backendRootUrl + 'auth/google/';
+  signOutUrl = this.backendRootUrl + 'auth/logout/';
+  tokenRefreshUrl = this.backendRootUrl + 'auth/token/refresh/';
 
   constructor(private http: HttpClient) {
     this.accessToken = null;

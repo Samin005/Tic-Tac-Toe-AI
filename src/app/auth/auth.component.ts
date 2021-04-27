@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import Swal from 'sweetalert2';
 import {AuthService} from './auth.service';
 import {interval, Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +18,8 @@ export class AuthComponent implements OnInit {
 
   constructor(private http: HttpClient,
               public socialAuthService: SocialAuthService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
     this.refreshTokenSubscription = new Subscription();
   }
 
@@ -102,6 +104,10 @@ export class AuthComponent implements OnInit {
           title: error.message
         }).finally();
       });
+  }
+
+  navigateToLeaderboard(): void {
+    this.router.navigate(['leaderboard']).catch(error => console.log(error));
   }
   //
   // requestSecretData(): void {

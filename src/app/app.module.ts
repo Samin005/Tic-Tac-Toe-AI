@@ -13,6 +13,7 @@ import { TsParticlesComponent } from './ts-particles/ts-particles.component';
 import {FormsModule} from '@angular/forms';
 import { TypedjsModelDetailComponent } from './game/typedjs-model-detail/typedjs-model-detail.component';
 import { FooterComponent } from './footer/footer.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FooterComponent } from './footer/footer.component';
     BoardComponent,
     TsParticlesComponent,
     TypedjsModelDetailComponent,
-    FooterComponent
+    FooterComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,

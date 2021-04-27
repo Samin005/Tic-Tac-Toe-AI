@@ -68,6 +68,10 @@ export class GameService {
     this.typed.start();
   }
 
+  fetchLeaderboard(): Observable<any> {
+    return this.http.get(this.rootURL + 'leaderboard/');
+  }
+
   playButtonTapSound(): void {
     const sound = document.getElementById('button-tap-sound') as any;
     sound.play();

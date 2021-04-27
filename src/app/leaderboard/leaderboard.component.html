@@ -1,0 +1,26 @@
+<div class="text-left">
+  <button class="btn btn-dark" (click)="navigateToGame()">
+    <i class="fas fa-chevron-left"></i> Back
+  </button>
+</div>
+<div class="m-5">
+  <div *ngIf="socialAuthService.authState | async as user; else signedOut">
+    <div *ngIf="authService.refreshToken != null">
+      <div class="text-right">
+        <button class="btn btn-dark" (click)="showLeaderboard()">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+      <br>
+      <div *ngFor="let row of leaderboard$ | async" class="bg-dark text-white">
+        {{row.id}} {{row.user.username}} {{row['total_played']}}
+      </div>
+    </div>
+  </div>
+
+  <ng-template #signedOut>
+    <div class="bg-dark text-white p-3">
+      <h4>Please Sign-in to view the leaderboard</h4>
+    </div>
+  </ng-template>
+</div>
