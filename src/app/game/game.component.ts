@@ -13,26 +13,29 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    Swal.fire({title: 'Getting things ready...'}).finally();
-    Swal.showLoading();
-    this.gameService.initialize().subscribe(response => {
-      this.gameService.modes = Object.keys(response.modes) as any;
-      this.gameService.modeDetails = Object.values(response.modes);
-      this.gameService.modeDetail = this.gameService.modeDetails[0];
-      this.gameService.updateTypedOptions(true);
-      if (Swal.isVisible()) {
-        Swal.close();
-      }
-    }, error => {
-      Swal.fire({
-        icon: 'error',
-        title: error.status,
-        text: error.statusText,
-        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
-      }).then(() => {
-        this.ngOnInit();
+    if (!this.gameService.gameStarted && !this.gameService.alreadyInitialized) {
+      Swal.fire({title: 'Getting things ready...'}).finally();
+      Swal.showLoading();
+      this.gameService.initialize().subscribe(response => {
+        this.gameService.modes = Object.keys(response.modes) as any;
+        this.gameService.modeDetails = Object.values(response.modes);
+        this.gameService.modeDetail = this.gameService.modeDetails[0];
+        this.gameService.updateTypedOptions(true);
+        this.gameService.alreadyInitialized = true;
+        if (Swal.isVisible()) {
+          Swal.close();
+        }
+      }, error => {
+        Swal.fire({
+          icon: 'error',
+          title: error.status,
+          text: error.statusText,
+          confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
+        }).then(() => {
+          this.ngOnInit();
+        });
       });
-    });
+    }
   }
 
   displayModeDetails(option: any): void {

@@ -21,20 +21,9 @@ export class LeaderboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.socialAuthService.authState.subscribe(user => {
-    //   if (user != null){
-    //     this.showLeaderboard();
-    //   }
-    // });
   }
 
   navigateToGame(): void {
     this.router.navigate(['']).catch(error => console.log(error));
-  }
-
-  showLeaderboard(): void {
-    this.leaderboard$.subscribe(response => {
-      console.log(response);
-    });
   }
 }

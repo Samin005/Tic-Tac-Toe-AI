@@ -77,8 +77,7 @@ export class AuthComponent implements OnInit {
     Swal.fire({title: 'Signing-out...'}).finally();
     Swal.showLoading();
     this.authService.callUserSignOut().subscribe(
-      (response) => {
-        console.log(response);
+      () => {
         this.authService.resetTokens();
         this.refreshTokenSubscription.unsubscribe();
         this.socialAuthService.signOut()

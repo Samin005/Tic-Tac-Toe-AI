@@ -16,6 +16,7 @@ export class GameService {
   modeDetails = [];
   modeDetail = '';
   gameStarted = false;
+  alreadyInitialized = false;
   typedOptions = {
     strings: [this.modeDetail],
     typeSpeed: 15,
@@ -59,8 +60,8 @@ export class GameService {
     this.isGameOver = response.isGameOver;
   }
 
-  updateTypedOptions(distroy: boolean): void {
-    if (distroy) {
+  updateTypedOptions(destroy: boolean): void {
+    if (destroy) {
       this.typed.destroy();
     }
     this.typedOptions.strings = [this.modeDetail];

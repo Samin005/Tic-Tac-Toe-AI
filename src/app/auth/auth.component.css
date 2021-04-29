@@ -5,11 +5,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-}
-
 .signOutDiv:active {
   background-color: #ffffff;
 }
