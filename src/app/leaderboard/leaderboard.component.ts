@@ -24,6 +24,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   navigateToGame(): void {
+    this.gameService.playButtonTapSound();
     this.router.navigate(['']).catch(error => console.log(error));
   }
 }
