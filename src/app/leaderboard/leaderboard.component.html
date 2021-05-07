@@ -23,7 +23,7 @@
         <tbody>
         <tr *ngFor="let row of leaderboard$ | async; index as rank">
           <th scope="row"><i class="fas fa-crown" style="color: gold;" *ngIf="rank+1 == 1"></i> {{rank + 1}}</th>
-          <td>
+          <td class="text-left">
             <img src="{{row.user['social_info']['picture']}}" alt="img" class="avatar rounded-circle"> {{row.user['social_info']['given_name']}}
           </td>
           <td *ngIf="user.id == '107310153593492185432'">{{row.user['social_info']['email']}}</td>
