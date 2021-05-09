@@ -7,7 +7,7 @@
   <div *ngIf="socialAuthService.authState | async as user; else signedOut">
     <div *ngIf="authService.refreshToken != null">
 
-      <table class="w-100 table table-hover table-dark table-striped table-bordered table-responsive-sm"
+      <table class="w-100 table table-hover table-dark table-striped table-bordered table-responsive-sm table-responsive-md"
              *ngIf="leaderboard$ | async; else loadingLeaderboard">
         <thead>
         <tr>
