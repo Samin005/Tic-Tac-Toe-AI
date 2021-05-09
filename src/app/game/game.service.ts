@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import Typed from 'typed.js';
 import {retry} from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +68,15 @@ export class GameService {
     this.typedOptions.strings = [this.modeDetail];
     this.typed = new Typed('#typedText', this.typedOptions);
     this.typed.start();
+  }
+
+  showInternetError(error: any): Promise<any> {
+    return Swal.fire({
+      icon: 'error',
+      title: error.statusText,
+      text: 'Are you connected to the internet?',
+      confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
+    });
   }
 
   fetchLeaderboard(): Observable<any> {

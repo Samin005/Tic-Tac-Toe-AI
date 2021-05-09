@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {GoogleLoginProvider, SocialAuthService} from 'angularx-social-login';
 import {HttpClient} from '@angular/common/http';
-import Swal from 'sweetalert2';
-import {AuthService} from './auth.service';
-import {interval, Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {interval, Subscription} from 'rxjs';
+import {GoogleLoginProvider, SocialAuthService} from 'angularx-social-login';
+import {AuthService} from './auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-auth',

@@ -8,7 +8,7 @@
     <div *ngIf="authService.refreshToken != null">
 
       <table class="w-100 table table-hover table-dark table-striped table-bordered table-responsive-sm table-responsive-md"
-             *ngIf="leaderboard$ | async; else loadingLeaderboard">
+             *ngIf="leaderboard$ | async; else loadingOrError">
         <thead>
         <tr>
           <th scope="col">Rank</th>
@@ -35,10 +35,22 @@
         </tbody>
       </table>
 
-      <ng-template #loadingLeaderboard>
-        <div class="spinner-border text-light" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
+      <ng-template #loadingOrError>
+        <ng-container *ngIf="errorObject; else showLoading">
+          <div class="col-12 text-center">
+            <div class="alert badge-dark text-danger font-weight-bold">
+              Could not load the leaderboard. Are you connected to the internet?
+            </div>
+            <button class="btn btn-dark" (click)="loadLeaderboard()">
+              <i class="fas fa-sync-alt"></i> Retry
+            </button>
+          </div>
+        </ng-container>
+        <ng-template #showLoading>
+          <div class="spinner-border text-light" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </ng-template>
       </ng-template>
 
     </div>

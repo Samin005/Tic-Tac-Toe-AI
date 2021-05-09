@@ -42,13 +42,7 @@ export class BoardComponent implements OnInit {
         this.gameService.playGameWonSound();
       }
     }, error => {
-      console.log(error);
-      Swal.fire({
-        icon: 'error',
-        title: error.status,
-        text: error.statusText,
-        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
-      }).then(() => {
+      this.gameService.showInternetError(error).then(() => {
         this.btnClick(btnID, true);
       });
     });
@@ -62,12 +56,7 @@ export class BoardComponent implements OnInit {
     }).subscribe(response => {
       this.gameService.updateBoard(response);
     }, error => {
-      Swal.fire({
-        icon: 'error',
-        title: error.status,
-        text: error.statusText,
-        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
-      }).then(() => this.resetBoard());
+      this.gameService.showInternetError(error).then(() => this.resetBoard());
     });
   }
 }

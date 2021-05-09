@@ -26,12 +26,7 @@ export class GameComponent implements OnInit {
           Swal.close();
         }
       }, error => {
-        Swal.fire({
-          icon: 'error',
-          title: error.status,
-          text: error.statusText,
-          confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
-        }).then(() => {
+        this.gameService.showInternetError(error).then(() => {
           this.ngOnInit();
         });
       });
@@ -54,12 +49,7 @@ export class GameComponent implements OnInit {
       this.gameService.updateBoard(response);
       this.gameService.gameStarted = true;
     }, error => {
-      Swal.fire({
-        icon: 'error',
-        title: error.status,
-        text: error.statusText,
-        confirmButtonText: '<i class="fas fa-sync-alt"></i> Retry'
-      }).then(() => this.startGame());
+      this.gameService.showInternetError(error).then(() => this.startGame());
     });
   }
 
